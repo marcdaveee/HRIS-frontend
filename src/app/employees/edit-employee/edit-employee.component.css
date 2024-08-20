@@ -1,0 +1,32 @@
+.top-heading {
+  margin-bottom: 32px;
+}
+
+.content-top {
+  display: flex;
+  align-items: center;
+}
+
+.back-btn {
+  display: block;
+  margin-right: 18px;
+  border: none;
+  border-radius: 50%;
+}
+
+.back-btn .custom-icon-size {
+  font-size: 48px;
+  width: auto;
+  height: auto;
+}
+
+.form-wrapper {
+  margin-left: 24px;
+  width: 50%;
+}
+
+.submit-wrapper {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,29 @@
+.nav-container {
+  padding: 0 8px;
+}
+
+.nav-header {
+  margin: 24px 0;
+  font-weight: 600;
+  color: #0f766e;
+  font-size: x-large;
+  text-align: center;
+}
+
+.nav-link-item {
+  text-decoration: none;
+  color: #020617;
+  display: block;
+  margin-bottom: 18px;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.nav-link-active {
+  background-color: #0f766e;
+  color: #fff;
+}
+
+.nav-link-text {
+  color: #fff;
+}

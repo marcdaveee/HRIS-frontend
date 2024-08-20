@@ -1,1 +1,120 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #1f2937;
+}
+
+a {
+  text-decoration: none;
+  color: #1f2937;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Flex */
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  letter-spacing: 1.1px;
+  background: #e2e8f0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: #064e3b;
+
+  color: #fff;
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  border: 1px solid #064e3b;
+  color: #064e3b;
+  font-weight: 500;
+}
+
+.btn-outline-primary:hover {
+  background-color: #064e3b;
+  color: #fff;
+}
+
+/* btn sizes */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+/* Font-weight */
+.fw-600 {
+  font-weight: 600;
+}
+.fw-500 {
+  font-weight: 500;
+}
+
+/* Alignment */
+.text-center {
+  text-align: center;
+}
+
+/* Forms */
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-group label,
+.form-group input,
+.form-group select {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group {
+  margin-bottom: 28px;
+}
+
+.form-control {
+  padding: 10px 8px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+.error-block {
+  color: #dc2626;
+  font-size: 13px;
+}

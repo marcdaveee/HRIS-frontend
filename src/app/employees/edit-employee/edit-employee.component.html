@@ -1,0 +1,90 @@
+<div class="top-heading">
+  <div class="content-top">
+    <a routerLink="/employees" class="back-btn"
+      ><mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="keyboard_backspace"
+        class="custom-icon-size"
+      ></mat-icon
+    ></a>
+    <h2>Update Employee</h2>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <form [formGroup]="editEmployeeForm" (ngSubmit)="onSubmit()">
+    <div class="grid grid-2">
+      <div class="form-group">
+        <label for="firstname">First name</label>
+        <input
+          type="text"
+          name="firstname"
+          class="form-control"
+          formControlName="firstname"
+        />
+        <div
+          class="error-block"
+          *ngIf="
+            !editEmployeeForm.get('firstname')?.valid &&
+            (editEmployeeForm.get('firstname')?.touched || isFormSubmitted)
+          "
+        >
+          First name is a required field.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Last name</label>
+        <input
+          type="text"
+          name="lastname"
+          class="form-control"
+          formControlName="lastname"
+        />
+        <div
+          class="error-block"
+          *ngIf="
+            !editEmployeeForm.get('lastname')?.valid &&
+            (editEmployeeForm.get('lastname')?.touched || isFormSubmitted)
+          "
+        >
+          Last name is a required field.
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="form-group">
+        <label for="department">Department</label>
+        <select
+          name="department"
+          class="form-control"
+          formControlName="department"
+        >
+          <option value="">---- Select ----</option>
+          <option
+            *ngFor="let department of departments"
+            value="{{ department.id }}"
+          >
+            {{ department.departmentName }}
+          </option>
+        </select>
+
+        <div
+          class="error-block"
+          *ngIf="
+            !editEmployeeForm.get('department')?.valid &&
+            (editEmployeeForm.get('department')?.touched || isFormSubmitted)
+          "
+        >
+          Select the department.
+        </div>
+      </div>
+    </div>
+
+    <div class="submit-wrapper">
+      <button class="btn btn-primary">Add Employee</button>
+    </div>
+  </form>
+</div>

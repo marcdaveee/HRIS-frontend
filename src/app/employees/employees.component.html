@@ -1,0 +1,51 @@
+<div class="top-heading">
+  <h2>Employees</h2>
+</div>
+
+<div class="top-actions">
+  <!-- Search Form -->
+  <div class="search-wrapper">
+    <input type="text" class="form-control" placeholder="Search employee" />
+    <button>
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+
+  <a
+    routerLink="/new-employee"
+    *ngIf="employees.length != 0"
+    class="btn btn-primary"
+    >Add Employee</a
+  >
+</div>
+
+<h3 *ngIf="isContentLoading" class="text-center highlighted">Loading...</h3>
+
+<h3 *ngIf="errorMessage != ''" class="text-center highlighted">
+  Failed to load data.
+</h3>
+
+<div class="list-view-container" *ngIf="employees.length != 0">
+  <div class="list-view-header">
+    <h4></h4>
+    <h4 class="fw-500">Name</h4>
+    <h4 class="fw-500">Department</h4>
+    <h4 class="fw-500">Status</h4>
+    <h4 class="text-center fw-500">Actions</h4>
+  </div>
+
+  <div class="list-view-row" *ngFor="let item of employees">
+    <p></p>
+    <p class="fw-600">{{ item.firstname }} {{ item.lastname }}</p>
+    <p>{{ item.department?.departmentName }}</p>
+
+    <p>On Leave</p>
+    <div class="text-center">
+      <a
+        routerLink="/edit-employee/{{ item.id }}"
+        class="btn btn-sm btn-outline-primary"
+        >Edit</a
+      >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.main-header {
+  border-radius: 5px;
+  padding: 14px 8px;
+  background-color: #064e3b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.text-header {
+  font-weight: 400;
+}
