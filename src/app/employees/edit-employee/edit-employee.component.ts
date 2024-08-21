@@ -6,6 +6,8 @@ import { DepartmentService } from '../../services/department.service';
 import { IEditEmployee, IEmployee } from '../../models/IEmployee.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
+import { AlertService } from '../../services/alert.service';
+import { DialogService } from '../../services/dialog.service';
 
 @Component({
   selector: 'app-edit-employee',
@@ -21,6 +23,8 @@ export class EditEmployeeComponent {
   constructor(
     private _employeeService: EmployeeService,
     private _departmentService: DepartmentService,
+    private _alertService: AlertService,
+    private _dialogService: DialogService,
     private _router: Router,
     private _route: ActivatedRoute
   ) {}
@@ -61,21 +65,52 @@ export class EditEmployeeComponent {
     });
   }
 
+  onRemove() {
+    this._dialogService
+      .openConfirmDialog('Are you sure you want to delete this employee?')
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          console.log('To be deleted');
+          const employeeId = this._route.snapshot.params['id'];
+          this._employeeService.deleteEmployeeById(employeeId).subscribe({
+            next: () => {
+              this._alertService.showSuccesfulAlert(
+                'Employee was deleted successfully.'
+              );
+              this._router.navigate(['/employees']);
+            },
+            error: () => {
+              this._alertService.showSuccesfulAlert(
+                'Error occured. Please try again'
+              );
+            },
+          });
+        }
+      });
+  }
+
   onSubmit() {
     this.isFormSubmitted = true;
     console.log(this.editEmployeeForm.value);
     if (this.editEmployeeForm.valid) {
-      const newEmployee: IEditEmployee = {
+      const updatedEmployee: IEditEmployee = {
+        id: this.employeeToUpdate?.id,
         firstname: this.editEmployeeForm.value.firstname,
         lastname: this.editEmployeeForm.value.lastname,
         departmentId: +this.editEmployeeForm.value.department,
       };
-      console.log('New Employee:', newEmployee);
-      this._employeeService.addEmployee(newEmployee).subscribe({
+      console.log('Updated Employee:', updatedEmployee);
+
+      this._employeeService.updateEmployee(updatedEmployee).subscribe({
         next: (res) => {
           console.log(res);
-          // Clear fields
-          this.editEmployeeForm.reset();
+          this.editEmployeeForm.patchValue({
+            firstname: res.firstname,
+            lastname: res.lastname,
+            department: res.departmentId,
+          });
+          this._alertService.showSuccesfulAlert('Updated Successfully');
           this.isFormSubmitted = false;
         },
         error: (err) => {

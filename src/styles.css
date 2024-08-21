@@ -1,3 +1,4 @@
+@import "@angular/material/prebuilt-themes/azure-blue.css";
 /* You can add global styles to this file, and also import other style files */
 * {
   margin: 0;
@@ -70,6 +71,18 @@ a {
   color: #fff;
 }
 
+.btn-outline-delete {
+  background-color: transparent;
+  border: 1px solid #dc2626;
+  color: #dc2626;
+  font-weight: 400;
+}
+
+.btn-outline-delete:hover {
+  background-color: #dc2626;
+  color: #fff;
+}
+
 /* btn sizes */
 .btn-sm {
   padding: 6px 12px;
@@ -117,4 +130,10 @@ a {
 .error-block {
   color: #dc2626;
   font-size: 13px;
+}
+
+/* Alerts */
+.success-alert {
+  --mdc-snackbar-container-color: #12c99b !important;
+  --mdc-text-button-label-text-color: #fff !important;
 }

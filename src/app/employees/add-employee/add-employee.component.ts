@@ -4,6 +4,7 @@ import { EmployeeService } from '../../services/employee.service';
 import { DepartmentService } from '../../services/department.service';
 import { IDepartment } from '../../models/IDepartment.interface';
 import { ICreateEmployee } from '../../models/IEmployee.interface';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -17,7 +18,8 @@ export class AddEmployeeComponent implements OnInit {
 
   constructor(
     private _employeeService: EmployeeService,
-    private _departmentService: DepartmentService
+    private _departmentService: DepartmentService,
+    private _alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -47,6 +49,7 @@ export class AddEmployeeComponent implements OnInit {
       this._employeeService.addEmployee(newEmployee).subscribe({
         next: (res) => {
           console.log(res);
+          this._alertService.showSuccesfulAlert('Employee was added');
           // Clear fields
           this.addEmployeeForm.reset();
           this.isFormSubmitted = false;
